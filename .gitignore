@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+wheels/
+*.whl
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data files
+*.csv
+*.tsv
+*.parquet
+*.json
+!package.json
+*.xlsx
+*.xls
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# MyPy / type checkers
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Distribution / packaging
+*.tar.gz
+*.zip
