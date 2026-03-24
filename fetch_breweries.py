@@ -10,6 +10,18 @@ MAX_RETRIES = 3
 
 
 def fetch_all_breweries():
+    """
+    Fetch all brewery records from the configured Open Brewery DB API across paginated responses.
+    
+    Retrieves pages of breweries (using PER_PAGE) starting at page 1 and accumulates results until the API returns an empty page or a page with fewer than PER_PAGE items. Each page request is retried up to MAX_RETRIES on timeouts with exponential backoff between attempts.
+    
+    Returns:
+        list[dict]: A list of brewery objects returned by the API, in the order fetched.
+    
+    Raises:
+        requests.exceptions.Timeout: If a page request times out on the final retry.
+        SystemExit: If a non-timeout request error occurs for any page (wraps the original RequestException).
+    """
     breweries = []
     page = 1
 
@@ -48,6 +60,18 @@ def fetch_all_breweries():
 
 
 def save_to_csv(breweries, filepath):
+    """
+    Write a list of brewery records to a CSV file, using columns for every key present across the records.
+    
+    Parameters:
+        breweries (list[dict]): Iterable of brewery objects (dictionaries) to write as CSV rows.
+        filepath (str): Path to the output CSV file.
+    
+    Notes:
+        - Column headers are the sorted union of all keys found in `breweries`.
+        - If `breweries` is empty, the function prints "No data to save." and does not create a file.
+        - On success, the function prints a message stating how many breweries were saved and the output path.
+    """
     if not breweries:
         print("No data to save.")
         return
