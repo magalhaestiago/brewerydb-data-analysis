@@ -136,4 +136,7 @@ export(result, "output")
 
 
 def unused_function():
+    """
+    Print a message indicating this function is never called.
+    """
     print("This function is never called")
