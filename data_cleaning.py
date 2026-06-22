@@ -133,3 +133,7 @@ result = clean(data)
 stats = analyze(result)
 print(stats)
 export(result, "output")
+
+
+def unused_function():
+    print("This function is never called")
